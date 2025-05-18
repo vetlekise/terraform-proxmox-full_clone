@@ -6,7 +6,7 @@ A Terraform module for cloning a virtual machine using full clone in Proxmox VE.
 
 Below is a good example of how to use this module.
 
-```
+```terraform
 module "example" {
   source = "github.com/vetlekise/terraform-proxmox-full_clone"
 

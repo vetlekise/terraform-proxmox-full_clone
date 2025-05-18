@@ -1,18 +1,35 @@
-# Module Name
+# Terraform Proxmox Full Clone
 
-> Insert one-liner description here.
->
-> Example: This Terraform module deploys an APPLICATION on PROVIDER using SERVICE.
+A Terraform module for cloning a virtual machine using full clone in Proxmox VE.
 
 ## Usage
 
-Below is a basic example of how to use this module. For more detailed examples, please refer to the [examples](./examples) directory.
+Below is a good example of how to use this module.
 
-```terraform
+```
 module "example" {
-  # Use commit hash to prevent supply chain attacks.
-  # source = "github.com/organization/repository-name?ref=v1.0.0
-  source = "github.com/organization/repository?ref=a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
+  source = "github.com/vetlekise/terraform-proxmox-full_clone"
+
+  # Required
+  vm_name                = "example"
+  proxmox_target_node    = "proxmox-node"
+  clone                  = "ubuntu-2404-noble"
+  disk_storage           = "local-lvm"
+  disk_size              = "32G"
+  cloudinit_disk_storage = "local-lvm"
+  network_bridge         = "vmbr0"
+
+  # Cloud-Init Settings (Optional but Recommended)
+  ciuser               = "auto"
+  ssh_public_keys_file = "keys/id_auto.pub"
+  ipconfig0            = "ip=192.168.3.238/24,gw=192.168.3.1"
+
+  # Other Optional
+  vmid      = 105
+  pool_name = "test"
+  #vm_state  = "running"
+  vm_memory = 4094
+  vm_cores  = 2
 }
 ```
 

@@ -1,29 +1,23 @@
-# ./modules/proxmox-vm-single-clone/variables.tf
-
-# --- VM Identification ---
 variable "vm_name" {
   description = "Name for the virtual machine."
   type        = string
-  # No default - required
 }
 
 variable "vmid" {
   description = "The unique VMID for the VM. If set to 0 (default), Proxmox will assign the next available ID."
   type        = number
-  default     = 0 # Default to 0 to let Proxmox assign next available ID
+  default     = 0
 }
 
 variable "clone" {
   description = "The name of the EXISTING Proxmox template to clone from."
   type        = string
-  # No default - required
 }
 
 # --- Proxmox Target ---
 variable "proxmox_target_node" {
   description = "Proxmox node where the VM will be created."
   type        = string
-  # No default - required
 }
 
 variable "pool_name" {
@@ -32,11 +26,10 @@ variable "pool_name" {
   default     = null
 }
 
-# --- VM State & Protection ---
 variable "vm_state" {
   description = "Desired state for the VM after creation - 'running' or 'stopped'."
   type        = string
-  default     = "stopped" # Safer default
+  default     = "stopped"
   validation {
     condition     = contains(["running", "stopped"], var.vm_state)
     error_message = "Allowed values for vm_state are 'running' or 'stopped'."
@@ -49,7 +42,6 @@ variable "protection" {
   default     = false
 }
 
-# --- VM Hardware & Settings ---
 variable "vm_memory" {
   description = "Memory (in MiB) for the VM."
   type        = number
@@ -65,7 +57,7 @@ variable "vm_cores" {
 variable "vm_sockets" {
   description = "Number of CPU sockets for the VM."
   type        = number
-  default     = 1 # Default to 1, matching working VM and provider default
+  default     = 1
 }
 
 variable "scsihw" {
@@ -77,7 +69,7 @@ variable "scsihw" {
 variable "qemu_os" {
   description = "Guest OS type for Proxmox optimizations (e.g., 'l26' for Linux)."
   type        = string
-  default     = "l26" # Adjust based on your guest OS
+  default     = "l26"
 }
 
 variable "agent_enabled" {
@@ -102,58 +94,53 @@ variable "vga_type" {
 variable "disk_storage" {
   description = "Storage pool for the VM's primary OS disk (e.g., 'local-lvm')."
   type        = string
-  # No default - required
 }
 
 variable "disk_slot" {
   description = "The slot for the primary OS disk (e.g., 'scsi0', 'virtio0')."
   type        = string
-  default     = "scsi0" # Matches working VM
+  default     = "scsi0"
 }
 
 variable "disk_size" {
   description = "Required: Target size of the primary OS disk (e.g., '32G'). Must be provided even when cloning."
   type        = string
-  # No default - required by the provider
 }
 
 variable "os_disk_discard" {
   description = "Enable/disable discard (TRIM) for the OS disk."
   type        = bool
-  default     = true # Matches working VM (discard=on)
+  default     = true
 }
 
 variable "os_disk_iothread" {
   description = "Enable/disable iothread for the OS disk (requires scsihw='virtio-scsi-single')."
   type        = bool
-  default     = true # Matches working VM (iothread=1)
+  default     = true
 }
 
 variable "os_disk_ssd" {
   description = "Emulate SSD for the OS disk (ssd=1)."
   type        = bool
-  default     = true # Matches working VM (ssd=1)
+  default     = true
 }
 
 
-# --- Cloud-Init Drive Configuration ---
 variable "cloudinit_disk_storage" {
   description = "Required: Storage pool for the Cloud-Init drive (must support snippets/ISO images, e.g., 'local', 'local-lvm')."
   type        = string
-  # No default - required
 }
 
 variable "cloudinit_disk_slot" {
   description = "Disk slot for the Cloud-Init drive (e.g., 'ide0', 'ide2', 'sata1')."
   type        = string
-  default     = "ide0" # Matches working VM
+  default     = "ide0"
 }
 
-# --- Cloud-Init Configuration Arguments (Passed during Clone) ---
 variable "ciuser" {
   description = "Cloud-Init username to configure."
   type        = string
-  default     = "ubuntu" # Common default for Ubuntu cloud images
+  default     = "adminuser"
 }
 
 variable "cipassword" {
@@ -176,7 +163,6 @@ variable "ssh_public_keys_file" {
   description = "Path to a file containing SSH public keys. This is mutually exclusive with 'ssh_public_keys'."
 
   validation {
-    # Use var.ssh_public_keys_file explicitly here
     condition     = var.ssh_public_keys_file == null || fileexists(var.ssh_public_keys_file)
     error_message = "If 'ssh_public_keys_file' is specified, the file must exist and be readable."
   }
@@ -185,7 +171,7 @@ variable "ssh_public_keys_file" {
 variable "ipconfig0" {
   description = "IP configuration for the VM's first network interface (net0) (e.g., 'ip=dhcp' or 'ip=10.0.0.5/24,gw=10.0.0.1')."
   type        = string
-  default     = "ip=dhcp" # Explicitly set DHCP as default, might help CI
+  default     = "ip=dhcp"
 }
 
 variable "nameserver" {
@@ -200,21 +186,19 @@ variable "searchdomain" {
   default     = null
 }
 
-# --- Network Configuration ---
 variable "network_bridge" {
   description = "Network bridge for the VM's network interface (e.g., 'vmbr0')."
   type        = string
-  # No default - required
 }
 
 variable "network_model" {
   description = "Network card model (e.g., 'virtio', 'e1000')."
   type        = string
-  default     = "virtio" # Matches working VM
+  default     = "virtio"
 }
 
 variable "network_firewall" {
   description = "Enable/disable Proxmox firewall on the network interface."
   type        = bool
-  default     = true # Matches working VM (firewall=1)
+  default     = true
 }

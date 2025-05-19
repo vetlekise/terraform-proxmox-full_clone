@@ -171,14 +171,14 @@ variable "ssh_public_keys" {
 }
 
 variable "ssh_public_keys_file" {
-  description = "Path to a file containing newline-separated public SSH keys (e.g., '~/.ssh/id_rsa.pub'). Recommended."
   type        = string
-  default     = null # Optional, but recommended to provide keys
+  default     = null
+  description = "Path to a file containing SSH public keys. This is mutually exclusive with 'ssh_public_keys'."
 
   validation {
-    # Ensure that if keys are provided, only one method (file or string) is used. Allows neither to be set.
-    condition     = var.ssh_public_keys == null || var.ssh_public_keys_file == null
-    error_message = "Provide SSH keys using either 'ssh_public_keys' or 'ssh_public_keys_file', not both."
+    # Use var.ssh_public_keys_file explicitly here
+    condition     = var.ssh_public_keys_file == null || fileexists(var.ssh_public_keys_file)
+    error_message = "If 'ssh_public_keys_file' is specified, the file must exist and be readable."
   }
 }
 

@@ -66,7 +66,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_agent_enabled"></a> [agent\_enabled](#input\_agent\_enabled) | Enable the QEMU Guest Agent (requires agent installed in the source template). | `bool` | `true` | no |
 | <a name="input_cipassword"></a> [cipassword](#input\_cipassword) | Cloud-Init user password. **Warning: Sensitive**. Consider using SSH keys exclusively. | `string` | `null` | no |
-| <a name="input_ciuser"></a> [ciuser](#input\_ciuser) | Cloud-Init username to configure. | `string` | `"ubuntu"` | no |
+| <a name="input_ciuser"></a> [ciuser](#input\_ciuser) | Cloud-Init username to configure. | `string` | `"adminuser"` | no |
 | <a name="input_clone"></a> [clone](#input\_clone) | The name of the EXISTING Proxmox template to clone from. | `string` | n/a | yes |
 | <a name="input_cloudinit_disk_slot"></a> [cloudinit\_disk\_slot](#input\_cloudinit\_disk\_slot) | Disk slot for the Cloud-Init drive (e.g., 'ide0', 'ide2', 'sata1'). | `string` | `"ide0"` | no |
 | <a name="input_cloudinit_disk_storage"></a> [cloudinit\_disk\_storage](#input\_cloudinit\_disk\_storage) | Required: Storage pool for the Cloud-Init drive (must support snippets/ISO images, e.g., 'local', 'local-lvm'). | `string` | n/a | yes |
@@ -89,7 +89,7 @@ No modules.
 | <a name="input_scsihw"></a> [scsihw](#input\_scsihw) | SCSI hardware controller type (e.g., 'virtio-scsi-pci', 'lsi'). Should match template. | `string` | `"virtio-scsi-single"` | no |
 | <a name="input_searchdomain"></a> [searchdomain](#input\_searchdomain) | DNS search domain for the VM (applied via Cloud-Init during clone). | `string` | `null` | no |
 | <a name="input_ssh_public_keys"></a> [ssh\_public\_keys](#input\_ssh\_public\_keys) | String containing newline-separated public SSH keys. Use 'ssh\_public\_keys\_file' instead. | `string` | `null` | no |
-| <a name="input_ssh_public_keys_file"></a> [ssh\_public\_keys\_file](#input\_ssh\_public\_keys\_file) | Path to a file containing newline-separated public SSH keys (e.g., '~/.ssh/id\_rsa.pub'). Recommended. | `string` | `null` | no |
+| <a name="input_ssh_public_keys_file"></a> [ssh\_public\_keys\_file](#input\_ssh\_public\_keys\_file) | Path to a file containing SSH public keys. This is mutually exclusive with 'ssh\_public\_keys'. | `string` | `null` | no |
 | <a name="input_vga_type"></a> [vga\_type](#input\_vga\_type) | Display type (e.g., 'serial0', 'std'). | `string` | `"std"` | no |
 | <a name="input_vm_cores"></a> [vm\_cores](#input\_vm\_cores) | Number of CPU cores per socket for the VM. | `number` | `2` | no |
 | <a name="input_vm_memory"></a> [vm\_memory](#input\_vm\_memory) | Memory (in MiB) for the VM. | `number` | `2048` | no |

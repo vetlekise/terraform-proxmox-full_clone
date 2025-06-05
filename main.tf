@@ -12,6 +12,7 @@ resource "proxmox_vm_qemu" "vm" {
   # Basic VM config
   name        = var.vm_name
   target_node = var.proxmox_target_node
+  tags        = var.tags
   pool        = var.pool_name != null && var.pool_name != "" ? proxmox_pool.vm-pool[0].poolid : null
   vmid        = var.vmid
 

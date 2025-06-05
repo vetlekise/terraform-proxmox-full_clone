@@ -26,6 +26,11 @@ variable "pool_name" {
   default     = null
 }
 
+variable "tags" {
+  description = "A list of tags to apply to the virtual machine."
+  type        = list(string)
+}
+
 variable "vm_state" {
   description = "Desired state for the VM after creation - 'running' or 'stopped'."
   type        = string

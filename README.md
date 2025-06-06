@@ -19,15 +19,16 @@ module "example" {
   cloudinit_disk_storage = "local-lvm"
   network_bridge         = "vmbr0"
 
-  # Cloud-Init Settings (Optional but Recommended)
+  # Cloud-Init Settings (Optional)
   ciuser               = "auto"
   ssh_public_keys_file = "keys/id_auto.pub"
   ipconfig0            = "ip=192.168.3.238/24,gw=192.168.3.1"
 
   # Other Optional
   vmid      = 105
+  tags      = ["application"]
   pool_name = "test"
-  #vm_state  = "running"
+  #vm_state = "running"
   vm_memory = 4094
   vm_cores  = 2
 }

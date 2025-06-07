@@ -101,7 +101,6 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_pool_id"></a> [pool\_id](#output\_pool\_id) | The ID of the Proxmox resource pool created (if requested). |
 | <a name="output_vm_default_ipv4_address"></a> [vm\_default\_ipv4\_address](#output\_vm\_default\_ipv4\_address) | The default IPv4 address reported by the guest agent. |
 | <a name="output_vm_id"></a> [vm\_id](#output\_vm\_id) | The Proxmox VMID of the created VM. |
 | <a name="output_vm_name"></a> [vm\_name](#output\_vm\_name) | The name of the created VM. |

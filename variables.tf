@@ -21,7 +21,7 @@ variable "proxmox_target_node" {
 }
 
 variable "pool_name" {
-  description = "Optional: Name of a Proxmox resource pool to create and assign the VM to. If null or empty, no pool is created/used."
+  description = "The name of the Proxmox resource pool. If create_new_pool is true, this will be the ID of the new pool. If false, this should be the ID of an existing pool."
   type        = string
   default     = null
 }
@@ -29,6 +29,7 @@ variable "pool_name" {
 variable "tags" {
   description = "A list of tags to apply to the virtual machine."
   type        = list(string)
+  default     = []
 }
 
 variable "vm_state" {

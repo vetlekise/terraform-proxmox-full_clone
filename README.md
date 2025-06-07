@@ -83,7 +83,7 @@ No modules.
 | <a name="input_os_disk_discard"></a> [os\_disk\_discard](#input\_os\_disk\_discard) | Enable/disable discard (TRIM) for the OS disk. | `bool` | `true` | no |
 | <a name="input_os_disk_iothread"></a> [os\_disk\_iothread](#input\_os\_disk\_iothread) | Enable/disable iothread for the OS disk (requires scsihw='virtio-scsi-single'). | `bool` | `true` | no |
 | <a name="input_os_disk_ssd"></a> [os\_disk\_ssd](#input\_os\_disk\_ssd) | Emulate SSD for the OS disk (ssd=1). | `bool` | `true` | no |
-| <a name="input_pool_name"></a> [pool\_name](#input\_pool\_name) | Optional: Name of a Proxmox resource pool to create and assign the VM to. If null or empty, no pool is created/used. | `string` | `null` | no |
+| <a name="input_pool_name"></a> [pool\_name](#input\_pool\_name) | The name of the Proxmox resource pool. If create\_new\_pool is true, this will be the ID of the new pool. If false, this should be the ID of an existing pool. | `string` | `null` | no |
 | <a name="input_protection"></a> [protection](#input\_protection) | If true, enable the protection flag on the VM in Proxmox. | `bool` | `false` | no |
 | <a name="input_proxmox_target_node"></a> [proxmox\_target\_node](#input\_proxmox\_target\_node) | Proxmox node where the VM will be created. | `string` | n/a | yes |
 | <a name="input_qemu_os"></a> [qemu\_os](#input\_qemu\_os) | Guest OS type for Proxmox optimizations (e.g., 'l26' for Linux). | `string` | `"l26"` | no |
@@ -91,7 +91,7 @@ No modules.
 | <a name="input_searchdomain"></a> [searchdomain](#input\_searchdomain) | DNS search domain for the VM (applied via Cloud-Init during clone). | `string` | `null` | no |
 | <a name="input_ssh_public_keys"></a> [ssh\_public\_keys](#input\_ssh\_public\_keys) | String containing newline-separated public SSH keys. Use 'ssh\_public\_keys\_file' instead. | `string` | `null` | no |
 | <a name="input_ssh_public_keys_file"></a> [ssh\_public\_keys\_file](#input\_ssh\_public\_keys\_file) | Path to a file containing SSH public keys. This is mutually exclusive with 'ssh\_public\_keys'. | `string` | `null` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | A list of tags to apply to the virtual machine. | `list(string)` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | A list of tags to apply to the virtual machine. | `list(string)` | `[]` | no |
 | <a name="input_vga_type"></a> [vga\_type](#input\_vga\_type) | Display type (e.g., 'serial0', 'std'). | `string` | `"std"` | no |
 | <a name="input_vm_cores"></a> [vm\_cores](#input\_vm\_cores) | Number of CPU cores per socket for the VM. | `number` | `2` | no |
 | <a name="input_vm_memory"></a> [vm\_memory](#input\_vm\_memory) | Memory (in MiB) for the VM. | `number` | `2048` | no |

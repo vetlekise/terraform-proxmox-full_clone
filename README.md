@@ -27,7 +27,6 @@ module "example" {
   # Other Optional
   vmid      = 105
   tags      = ["application"]
-  pool_name = "test"
   #vm_state = "running"
   vm_memory = 4094
   vm_cores  = 2

@@ -20,12 +20,6 @@ variable "proxmox_target_node" {
   type        = string
 }
 
-variable "pool_name" {
-  description = "The name of the Proxmox resource pool. If create_new_pool is true, this will be the ID of the new pool. If false, this should be the ID of an existing pool."
-  type        = string
-  default     = null
-}
-
 variable "tags" {
   description = "A list of tags to apply to the virtual machine."
   type        = list(string)

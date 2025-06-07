@@ -88,7 +88,7 @@ No modules.
 | <a name="input_searchdomain"></a> [searchdomain](#input\_searchdomain) | DNS search domain for the VM (applied via Cloud-Init during clone). | `string` | `null` | no |
 | <a name="input_ssh_public_keys"></a> [ssh\_public\_keys](#input\_ssh\_public\_keys) | String containing newline-separated public SSH keys. Use 'ssh\_public\_keys\_file' instead. | `string` | `null` | no |
 | <a name="input_ssh_public_keys_file"></a> [ssh\_public\_keys\_file](#input\_ssh\_public\_keys\_file) | Path to a file containing SSH public keys. This is mutually exclusive with 'ssh\_public\_keys'. | `string` | `null` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | A list of tags to apply to the virtual machine. | `list(string)` | `[]` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | A list of tags to apply to the virtual machine. | `string` | `null` | no |
 | <a name="input_vga_type"></a> [vga\_type](#input\_vga\_type) | Display type (e.g., 'serial0', 'std'). | `string` | `"std"` | no |
 | <a name="input_vm_cores"></a> [vm\_cores](#input\_vm\_cores) | Number of CPU cores per socket for the VM. | `number` | `2` | no |
 | <a name="input_vm_memory"></a> [vm\_memory](#input\_vm\_memory) | Memory (in MiB) for the VM. | `number` | `2048` | no |

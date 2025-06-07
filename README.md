@@ -26,7 +26,7 @@ module "example" {
 
   # Other Optional
   vmid      = 105
-  tags      = ["application"]
+  tags      = "application"
   #vm_state = "running"
   vm_memory = 4094
   vm_cores  = 2

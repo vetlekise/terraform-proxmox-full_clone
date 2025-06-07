@@ -22,8 +22,8 @@ variable "proxmox_target_node" {
 
 variable "tags" {
   description = "A list of tags to apply to the virtual machine."
-  type        = list(string)
-  default     = []
+  type        = string
+  default     = null
 }
 
 variable "vm_state" {

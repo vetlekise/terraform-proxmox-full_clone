@@ -58,7 +58,6 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [proxmox_pool.vm-pool](https://registry.terraform.io/providers/telmate/proxmox/3.0.1-rc8/docs/resources/pool) | resource |
 | [proxmox_vm_qemu.vm](https://registry.terraform.io/providers/telmate/proxmox/3.0.1-rc8/docs/resources/vm_qemu) | resource |
 
 ## Inputs
@@ -83,7 +82,6 @@ No modules.
 | <a name="input_os_disk_discard"></a> [os\_disk\_discard](#input\_os\_disk\_discard) | Enable/disable discard (TRIM) for the OS disk. | `bool` | `true` | no |
 | <a name="input_os_disk_iothread"></a> [os\_disk\_iothread](#input\_os\_disk\_iothread) | Enable/disable iothread for the OS disk (requires scsihw='virtio-scsi-single'). | `bool` | `true` | no |
 | <a name="input_os_disk_ssd"></a> [os\_disk\_ssd](#input\_os\_disk\_ssd) | Emulate SSD for the OS disk (ssd=1). | `bool` | `true` | no |
-| <a name="input_pool_name"></a> [pool\_name](#input\_pool\_name) | The name of the Proxmox resource pool. If create\_new\_pool is true, this will be the ID of the new pool. If false, this should be the ID of an existing pool. | `string` | `null` | no |
 | <a name="input_protection"></a> [protection](#input\_protection) | If true, enable the protection flag on the VM in Proxmox. | `bool` | `false` | no |
 | <a name="input_proxmox_target_node"></a> [proxmox\_target\_node](#input\_proxmox\_target\_node) | Proxmox node where the VM will be created. | `string` | n/a | yes |
 | <a name="input_qemu_os"></a> [qemu\_os](#input\_qemu\_os) | Guest OS type for Proxmox optimizations (e.g., 'l26' for Linux). | `string` | `"l26"` | no |

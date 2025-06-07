@@ -13,11 +13,6 @@ output "vm_node" {
   value       = proxmox_vm_qemu.vm.target_node
 }
 
-output "pool_id" {
-  description = "The ID of the Proxmox resource pool created (if requested)."
-  value       = one(proxmox_pool.vm-pool[*].poolid)
-}
-
 output "vm_ssh_user" {
   description = "The Cloud-Init user configured for the VM."
   value       = var.ciuser
